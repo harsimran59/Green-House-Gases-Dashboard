@@ -2,17 +2,21 @@
 
 library(shiny)
 library(ggplot2)
+library(dplyr)
+library(magrittr)
 
 # Load data --------------------------------------------------------------------
 
-#----load("movies.RData")
 
 dt <- read.csv("Methane_final.csv")
-dt <- dt %>% clean_names()
+#----dt <- dt %>% clean_names()
 
 # Define UI --------------------------------------------------------------------
 
 ui <- fluidPage(
+  
+  titlePanel("Global Emissions"),
+  img(src = "https://www.innovationnewsnetwork.com/wp-content/uploads/2022/11/%C2%A9-iStockPetmal-1340519929-800x450.jpg",align="left",height="45%", width="100%"),
   
   sidebarLayout(
     
@@ -40,7 +44,9 @@ ui <- fluidPage(
     
     # Output: Show scatterplot
     mainPanel(
-      plotOutput(outputId = "scatterplot")
+      plotOutput(outputId = "scatterplot", hover = "plot_hover"),
+      dataTableOutput(outputId = "emissionsTable"),
+      br()
     )
   )
 )
@@ -53,6 +59,12 @@ server <- function(input, output, session) {
     ggplot(data = dt, aes_string(x = input$x, y = input$y,
                                      color = input$z)) +
       geom_point()
+  })
+  
+  
+  output$emissionsTable <- renderDataTable({
+    nearPoints(dt, input$plot_hover) %>%
+      select(region, emissions, segment)
   })
   
 }
