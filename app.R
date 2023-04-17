@@ -14,6 +14,9 @@ dt <- dt %>% clean_names()
 
 ui <- fluidPage(
   
+  titlePanel("Global Emissions"),
+  #img(src = "emissions.jpg",align="right",height="70%", width="40%"),
+  
   sidebarLayout(
     
     # Inputs: Select variables to plot
@@ -40,7 +43,9 @@ ui <- fluidPage(
     
     # Output: Show scatterplot
     mainPanel(
-      plotOutput(outputId = "scatterplot")
+      plotOutput(outputId = "scatterplot", hover = "plot_hover"),
+      dataTableOutput(outputId = "emissionsTable"),
+      br()
     )
   )
 )
@@ -53,6 +58,12 @@ server <- function(input, output, session) {
     ggplot(data = dt, aes_string(x = input$x, y = input$y,
                                      color = input$z)) +
       geom_point()
+  })
+  
+  
+  output$emissionsTable <- renderDataTable({
+    nearPoints(dt, input$plot_hover) %>%
+      select(region, emissions, segment)
   })
   
 }
