@@ -21,6 +21,8 @@ ui <- fluidPage(
   img(src = "https://www.innovationnewsnetwork.com/wp-content/uploads/2022/11/%C2%A9-iStockPetmal-1340519929-800x450.jpg",align="right",height="45%", width="100%"),
   p("Image source from https://www.innovationnewsnetwork.com/wp-content/uploads/2022/11/%C2%A9-iStockPetmal-1340519929-800x450.jpg"),
   
+  p(" When you hover over the Scatter plot you will see the data table"),
+  
   sidebarLayout(
     
     # Inputs: Select variables to plot
