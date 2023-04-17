@@ -22,15 +22,20 @@ ui <- fluidPage(
       # Select variable for y-axis
       selectInput(inputId = "y", 
                   label = "Y-axis:",
-                  choices = c("region","country","emissions","type","segment","reason","baseYear","notes"), 
+                  choices = c("region","country","emissions","type","segment","reason","year","notes"), 
                   selected = "region"),
       
       # Select variable for x-axis
       selectInput(inputId = "x", 
                   label = "X-axis:",
-                  choices = c("region","country","emissions","type","segment","reason","baseYear","notes"), 
+                  choices = c("region","country","emissions","type","segment","reason","year","notes"), 
                   selected = "country"),
       
+      # Select variable for color
+      selectInput(inputId = "z", 
+                  label = "Color by:",
+                  choices = c("region","country","emissions","type","segment","reason","year","notes"),
+                  selected = "type")
     ),
     
     # Output: Show scatterplot
