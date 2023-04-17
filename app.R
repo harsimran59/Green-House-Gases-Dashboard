@@ -16,7 +16,12 @@ dt <- read.csv("Methane_final.csv")
 ui <- fluidPage(
   
   titlePanel("Global Emissions"),
-  img(src = "https://www.innovationnewsnetwork.com/wp-content/uploads/2022/11/%C2%A9-iStockPetmal-1340519929-800x450.jpg",align="left",height="45%", width="100%"),
+  p("Methane is responsible for around 30% of the rise in global temperatures since the Industrial Revolution, and rapid and sustained reductions in methane emissions are key to limiting near-term global warming and improving air quality. The energy sector – including oil, natural gas, coal and bioenergy – accounts for nearly 40% of methane emissions from human activity."),
+  
+  img(src = "https://www.innovationnewsnetwork.com/wp-content/uploads/2022/11/%C2%A9-iStockPetmal-1340519929-800x450.jpg",align="right",height="45%", width="100%"),
+  p("Image source from https://www.innovationnewsnetwork.com/wp-content/uploads/2022/11/%C2%A9-iStockPetmal-1340519929-800x450.jpg"),
+  
+  p(" When you hover over the Scatter plot you will see the data table"),
   
   sidebarLayout(
     
