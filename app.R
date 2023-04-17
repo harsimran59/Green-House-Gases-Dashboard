@@ -2,20 +2,21 @@
 
 library(shiny)
 library(ggplot2)
+library(dplyr)
+library(magrittr)
 
 # Load data --------------------------------------------------------------------
 
-#----load("movies.RData")
 
 dt <- read.csv("Methane_final.csv")
-dt <- dt %>% clean_names()
+#----dt <- dt %>% clean_names()
 
 # Define UI --------------------------------------------------------------------
 
 ui <- fluidPage(
   
   titlePanel("Global Emissions"),
-  #img(src = "emissions.jpg",align="right",height="70%", width="40%"),
+  img(src = "https://www.innovationnewsnetwork.com/wp-content/uploads/2022/11/%C2%A9-iStockPetmal-1340519929-800x450.jpg",align="left",height="45%", width="100%"),
   
   sidebarLayout(
     
